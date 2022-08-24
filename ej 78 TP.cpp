@@ -11,6 +11,9 @@ struct tprod {
 	int stk;
 };
 
+//detectar codigos repetidos
+
+
 //este metodo sirve para crear el archivo que se leera durante el ejercicio
 void Generararchivo() {
 	tprod rprod;
@@ -19,7 +22,7 @@ void Generararchivo() {
 	aprod = fopen("listaprod.dat", "w+b"); //fopen genera el archivo, el modo w+b hace que se genere un archivo del tipo binario
 	cout << "Ingrese codigo de producto (0 para cortar)" << endl;
 	cin >> rprod.codp;
-	while (rprod.codp!=0 && i > 30){
+	while (rprod.codp!=0 && i < 30){
 		cout << "Ingrese precio de producto" << endl;
 		cin >> rprod.PU;
 		cout << "Ingrese stock de producto" << endl;
@@ -44,10 +47,11 @@ void LeerArchivo (tprod VP[30], int &N) {
       return;
    }
       fread (&rprod, sizeof (rprod), 1, aprod);
+	  cout<<"lista de productos"<<endl;
       while (!feof (aprod)){   // feof se da cuenta que lleg al final del archivo slo cuando intenta leer y la operacion falla
      	cout << "Codigo de producto: " << rprod.codp<<endl;
-        cout << "Precio de producto" << rprod.PU << endl;
-		cout << "Stock de producto" << rprod.stk << endl;
+        cout << "Precio de producto: " << rprod.PU << endl;
+		cout << "Stock de producto: " << rprod.stk << endl;
 		VP[N] = rprod;
 		N++;
         fread (&rprod, sizeof (rprod), 1, aprod);
@@ -55,25 +59,27 @@ void LeerArchivo (tprod VP[30], int &N) {
 		fclose (aprod);
 };
 
-void Pedidos(tprod VP[30]){
+void Pedidos(tprod VP[30], int &N){
 	int codp,cant;
 	cout<<"Ingrese codigo de producto (0 para cortar): "<<endl;
 	cin>>codp;
-	int size = sizeof(VP);
+	int size = N;
+	bool flag = false;
 	while (codp!=0){
 		cout<<"Ingrese cantidad: "<<endl;
 		cin>>cant;
 		//busca dentro del array el producto con el codigo
 		for (int i = 0; i < size; ++i) {
-        		if(VP[i].codp==codp){
-					if(VP[i].stk>=cant){
-						VP[i].stk=VP[i].stk-cant;
+        		if(VP[i].codp==codp){//ve si el codigo ingresado coincide con el de alguno de los productos.
+					if(VP[i].stk>=cant){//revisa si el stock es mayor o igual que la cantidad.
+						VP[i].stk=VP[i].stk-cant;//si todo esta bien, resta la cantidad al stock
 					}else{
-						cout<<"No hay stock"<<endl;
+						cout<<"No hay stock"<<endl;//si la cantidad es mayor al stock, sale este mensaje
 					}
-					
-				} else {
-					cout << "no existe el producto"<<endl;
+					flag = true;
+				}
+				if(flag == false){//en caso de no encontrarse nunca el codigo se activa este if para avisar que no se encuentra
+					cout << "no se encuentra el codigo"<<endl;
 				}
 		}
 		cout<<"Ingrese codigo de producto (0 para cortar): "<<endl;
@@ -102,7 +108,7 @@ int main () {
             break;
          case 2:
             LeerArchivo(VP, N);//leemos el archivo y cargamos todo a VP, tambien obtenemos N
-			Pedidos(VP);
+			Pedidos(VP, N);
 			break;
 		case 3:
             break;
