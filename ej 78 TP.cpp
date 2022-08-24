@@ -11,7 +11,7 @@ struct tprod {
 	int stk;
 };
 
-//detectar codigos repetidos
+//buscar manera de detectar codigos repetidos
 
 
 //este metodo sirve para crear el archivo que se leera durante el ejercicio
@@ -85,7 +85,6 @@ void Pedidos(tprod VP[30], int &N){
 		cout<<"Ingrese codigo de producto (0 para cortar): "<<endl;
 		cin>>codp;
 		}
-	
 }
 
 int main () {
