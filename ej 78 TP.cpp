@@ -63,6 +63,7 @@ void Pedidos(tprod VP[30]){
 	while (codp!=0){
 		cout<<"Ingrese cantidad: "<<endl;
 		cin>>cant;
+		//busca dentro del array el producto con el codigo
 		for (int i = 0; i < size; ++i) {
         		if(VP[i].codp==codp){
 					if(VP[i].stk>=cant){
@@ -71,6 +72,8 @@ void Pedidos(tprod VP[30]){
 						cout<<"No hay stock";
 					}
 					
+				} else {
+					cout << "no existe el producto"
 				}
 		}
 		cout<<"Ingrese codigo de producto (0 para cortar): "<<endl;
