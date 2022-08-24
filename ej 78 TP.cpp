@@ -99,17 +99,17 @@ int main () {
       cin >> opc;
 
       switch (opc) {
-         case 0:
+        case 0:
             cout<<"Muchas gracias por utilizar el programa"<<endl;
-            break;
-         case 1:
+            	break;
+        case 1:
             Generararchivo();//generamos el archivo
-            break;
-         case 2:
+		break;
+        case 2:
             LeerArchivo(VP, N);//leemos el archivo y cargamos todo a VP, tambien obtenemos N
-			Pedidos(VP, N);
-			break;
-		case 3:
+		Pedidos(VP, N);
+		break;
+	case 3:
             break;
             cout <<"ERROR! La opcion seleccionada es invalida"<<endl;
             break;
