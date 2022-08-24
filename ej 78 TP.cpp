@@ -69,11 +69,11 @@ void Pedidos(tprod VP[30]){
 					if(VP[i].stk>=cant){
 						VP[i].stk=VP[i].stk-cant;
 					}else{
-						cout<<"No hay stock";
+						cout<<"No hay stock"<<endl;
 					}
 					
 				} else {
-					cout << "no existe el producto"
+					cout << "no existe el producto"<<endl;
 				}
 		}
 		cout<<"Ingrese codigo de producto (0 para cortar): "<<endl;
