@@ -58,7 +58,7 @@ void LeerArchivo (tprod VP[30], int &N) {
 		fclose (aprod);
 };
 
-void Pedidos(tprod VP[30], int &N){
+void ProdVec(tprod VP[30], int &N){
 
 	int codp,cant;
 	cout<<"Ingrese codigo de producto (0 para cortar): "<<endl;
@@ -129,7 +129,8 @@ int main () {
             LeerArchivo(VP, N);
 			break;
 		case 3:
-			Pedidos(VP, N);
+			LeerArchivo(VP, N);
+			ProdVec(VP, N);
 			ActualizarProd(VP, N);
             break;
             cout <<"ERROR! La opcion seleccionada es invalida"<<endl;
