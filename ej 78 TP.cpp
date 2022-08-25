@@ -98,7 +98,7 @@ void ActualizarProd(tprod VP[], int&n){
 	
     aprod=fopen("listaprod.dat","r+b");
 
-    for (j=0 ; j<=n; j++) {
+    for (j=0 ; j<n; j++) {
     	rprod = VP[j];
     	fwrite(&rprod, sizeof(rprod), 1, aprod);
     }
