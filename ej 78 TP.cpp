@@ -108,7 +108,7 @@ int main(){
 			case 3:
 				ProdVec(VP,N);
 				cout << "Ingrese codigo de producto (0 para cortar): " << endl;
-				cin >> rprod.codp;
+				cin >> codp;
 				while (codp!=0){
 					cout << "Ingrese cantidad: " << endl;
 					cin >> cant;
