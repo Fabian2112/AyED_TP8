@@ -77,7 +77,8 @@ void ProdVec(tprod VP[30], int &N){
 					}else{
 						cout<<"No hay stock"<<endl;//si la cantidad es mayor al stock, sale este mensaje
 						}
-					flag = true;
+					flag = true;//esta bandera sirve para controlar que no se ejecute mas de 1 vez por codigo
+					//ademas sirve para que se ejecute el mensaje de que si existe o no el codp
 				}
 		}
 		if(flag){
@@ -96,11 +97,11 @@ void ActualizarProd(tprod VP[], int&n){
     FILE *aprod;
     tprod rprod;
 	
-    aprod=fopen("listaprod.dat","r+b");
+    aprod=fopen("listaprod.dat","r+b");//se abre el archivo usando la variable aprod como referencia de este
 
     for (j=0 ; j<n; j++) {
-    	rprod = VP[j];
-    	fwrite(&rprod, sizeof(rprod), 1, aprod);
+    	rprod = VP[j];//en cada pasada un dato de vp se guarda en rprod
+    	fwrite(&rprod, sizeof(rprod), 1, aprod);//el contenido de rprod se guarda en el archivo
     }
     fclose(aprod);
 }
