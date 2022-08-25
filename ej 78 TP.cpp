@@ -44,11 +44,13 @@ void LeerArchivo (tprod VP[30], int &N) {
       return;
    }
       fread (&rprod, sizeof (rprod), 1, aprod);
-	  cout<<"lista de productos"<<endl;
+	  cout<<"Lista de productos: "<<endl;
+	  cout<<" "<<endl;
       while (!feof (aprod)){   // feof se da cuenta que lleg al final del archivo slo cuando intenta leer y la operacion falla
      	cout << "Codigo de producto: " << rprod.codp<<endl;
-        cout << "Precio de producto: " << rprod.PU << endl;
-		cout << "Stock de producto: " << rprod.stk << endl;
+        cout << "--Precio de producto: " << rprod.PU << endl;
+		cout << "--Stock de producto: " << rprod.stk << endl;
+		cout << " " << endl;
 		VP[N] = rprod;
 		N++;
         fread (&rprod, sizeof (rprod), 1, aprod);
@@ -60,19 +62,21 @@ void Pedidos(tprod VP[30], int &N){
 
 	int codp,cant;
 	cout<<"Ingrese codigo de producto (0 para cortar): "<<endl;
+	cout<<" "<<endl;
 	cin>>codp;
 	bool flag = false;
 	while (codp!=0){
-		cout<<"Ingrese cantidad: "<<endl;
-		cin>>cant;
 		//busca dentro del array el producto con el codigo
 		for (int i = 0; i < N; ++i) {
         		if(VP[i].codp==codp && flag == false){//ve si el codigo ingresado coincide con el de alguno de los productos.
+					cout<<"Ingrese cantidad: "<<endl;
+					cin>>cant;
 					if(VP[i].stk>=cant){//revisa si el stock es mayor o igual que la cantidad.
 						VP[i].stk=VP[i].stk-cant;//si todo esta bien, resta la cantidad al stock
+						cout<<"El stock actual es: "<< VP[i].stk<<endl;
 					}else{
 						cout<<"No hay stock"<<endl;//si la cantidad es mayor al stock, sale este mensaje
-					}
+						}
 					flag = true;
 				}
 		}
@@ -91,6 +95,7 @@ void ActualizarProd(tprod VP[], int&n){
     int j;
     FILE *aprod;
     tprod rprod;
+	
     aprod=fopen("listaprod.dat","r+b");
 
     for (j=0 ; j<=n; j++) {
@@ -106,8 +111,8 @@ int main () {
    int N = 0;
    tprod VP[30];
    do {
-      cout<<"Ingrese la opcion deseada"<<endl;
-      cout<<"1) Generar archivo"<<endl;
+      cout<<"Ingrese la opcion deseada: "<<endl;
+      cout<<"1) Generar Archivo"<<endl;
 	  cout<<"2) Leer Archivo"<<endl;
 	  cout<<"3) Ejercicio 78"<<endl;
       cout<<"0) Salir"<<endl;
