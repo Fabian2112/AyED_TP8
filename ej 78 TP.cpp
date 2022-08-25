@@ -96,7 +96,6 @@ void ActualizarProd(tprod VP[], int&n){
     int j;
     FILE *aprod;
     tprod rprod;
-	
     aprod=fopen("listaprod.dat","r+b");//se abre el archivo usando la variable aprod como referencia de este
 
     for (j=0 ; j<n; j++) {
@@ -130,7 +129,6 @@ int main () {
             LeerArchivo(VP, N);
 			break;
 		case 3:
-			LeerArchivo(VP, N);
 			ProdVec(VP, N);
 			ActualizarProd(VP, N);
             break;
