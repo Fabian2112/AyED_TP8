@@ -38,7 +38,7 @@ void Generararchivo() {
 
 //se lee el archivo, y se guarda en el array VP para despues usarlo y tambien el int N
 void LeerArchivo (tprod VP[30], int &N) {
-   FILE *aprod = fopen ("listaprod.dat", "r+b");//r+b es para lectura del archivo
+   FILE *aprod = fopen ("listaprod.dat", "rb");//r+b es para lectura del archivo
    tprod rprod;
    if (aprod == NULL) {
       cout << "ERROR! No existe el archivo" << endl;
@@ -67,7 +67,7 @@ void ProdVec(tprod VP[30], int &N){
 	cin>>codp;
 	while (codp!=0){
 		//busca dentro del array el producto con el codigo
-		for (int i = 0; i < N; ++i) {
+		for (int i = 0; i < N; i++) {
         		if(VP[i].codp==codp){//ve si el codigo ingresado coincide con el de alguno de los productos.
 					cout<<"Ingrese cantidad: "<<endl;
 					cin>>cant;
